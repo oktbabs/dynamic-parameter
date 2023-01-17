@@ -21,12 +21,10 @@ properties([parameters([
                                     }
                                     '''
                                     ]]], 
-                                    [$class: 'ChoiceParameter ', choiceType: '
-                                    PT_SINGLE_SELECT ', filterLength: 1, filterable: true, name: '
-                                    ENV - NAME ', randomName: '
-                                    choice - parameter - 19454835075409 ', script: [$class: '
-                                    GroovyScript ', fallbackScript: [classpath: [], oldScript: '
-                                    ', sandbox: true, script: '
+                                    [$class: 'ChoiceParameter ', choiceType: 'PT_SINGLE_SELECT ', filterLength: 1, filterable: true, name: 
+                                    'ENV - NAME ', randomName: '
+                                    choice - parameter - 19454835075409 ', script: 
+                                    [$class: 'GroovyScript ', fallbackScript: [classpath: [], oldScript: '', sandbox: true, script: '
                                     return [\'ERROR\']'], script: [classpath: [], oldScript: '', sandbox: true, script: '[\'dev\', \'sit\', \'demo\', \'uat\', \'prod\', \'dr\']']]
                             ],
                             [$class: 'CascadeChoiceParameter', choiceType: 'PT_SINGLE_SELECT', filterLength: 1, filterable: true, name: 'SERVER-NAME', randomName: 'choice-parameter-19454837964951', referencedParameters: 'ENV-NAME', script: [$class: 'GroovyScript', fallbackScript: [classpath: [], oldScript: '', sandbox: true, script: 'return[\'ERROR\']'], script: [classpath: [], oldScript: '', sandbox: true, script: '''
