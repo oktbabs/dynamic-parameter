@@ -1,0 +1,64 @@
+
+pipeline{
+    agent any
+
+    stages{
+        stage(){
+          step{
+            script{
+              
+properties([parameters([
+                    [$class: 'ChoiceParameter', choiceType: 'PT_SINGLE_SELECT', filterLength: 1, filterable: true, name: 'reponame', randomName: 'choice-parameter-19454829737064', script: [$class: 'GroovyScript', fallbackScript: [classpath: [], oldScript: '', sandbox: true, script: ''], script: [classpath: [], oldScript: '', sandbox: true, script: 'return[\' \', \'mep\', \'fins-datahub\']']]],
+                    [$class: 'CascadeChoiceParameter', choiceType: 'PT_SINGLE_SELECT', filterLength: 1, filterable: false, name: 'image', randomName: 'choice-parameter-19454832704262', referencedParameters: 'reponame', script: [$class: 'GroovyScript', fallbackScript: [classpath: [], oldScript: '', sandbox: false, script: ''], script: [classpath: [], oldScript: '', sandbox: true, script: ''
+                                'if (\'reponame\' == \'mep\'){
+                                return [\'aggregation-service\\nexecution-service\\nanalysis-service\\nauth-service\\nassembly-service\']
+                                }
+                                else
+                                if (\'reponame\' == \'fins-datahub\'){
+                                    return [\'orchestration-service\\nmodel-execution-configuration-service\\nmodel-catalogue-service\\nreport-service\\nassembly-service\']
+                                    }
+                                    else {
+                                        return ["There is no image. Pick a $reponame"]
+                                    }
+                                    ''
+                                    ']]], [$class: '
+                                    ChoiceParameter ', choiceType: '
+                                    PT_SINGLE_SELECT ', filterLength: 1, filterable: true, name: '
+                                    ENV - NAME ', randomName: '
+                                    choice - parameter - 19454835075409 ', script: [$class: '
+                                    GroovyScript ', fallbackScript: [classpath: [], oldScript: '
+                                    ', sandbox: true, script: '
+                                    return [\'ERROR\']'], script: [classpath: [], oldScript: '', sandbox: true, script: '[\'dev\', \'sit\', \'demo\', \'uat\', \'prod\', \'dr\']']]
+                            ],
+                            [$class: 'CascadeChoiceParameter', choiceType: 'PT_SINGLE_SELECT', filterLength: 1, filterable: true, name: 'SERVER-NAME', randomName: 'choice-parameter-19454837964951', referencedParameters: 'ENV-NAME', script: [$class: 'GroovyScript', fallbackScript: [classpath: [], oldScript: '', sandbox: true, script: 'return[\'ERROR\']'], script: [classpath: [], oldScript: '', sandbox: true, script: ''
+                                        'if (\'ENV-NAME\' == \'dev\'){
+                                        return [\'DEV-SERVER\']
+                                        }
+                                        else
+                                        if (\'ENV-NAME\' == \'sit\'){
+                                            return [\'SIT-SERVER\']
+                                            }
+                                            else if (\'ENV-NAME\' == \'demo\'){
+                                                return [\'DEMO-SERVER\']
+                                                }
+                                                else if (\'ENV-NAME\' == \'uat\'){
+                                                    return [\'UAT-SERVER\']
+                                                    }
+                                                    else if (\'ENV-NAME\' == \'prod\'){
+                                                        return [\'PROD-SERVER\']
+                                                        }
+                                                        else {
+                                                            return ["No such Environment. Select $ENV-NAME}"]
+                                                        }
+                                                        ''
+                                                        ']]]])])
+
+
+            }
+
+          }
+
+        }
+    }
+}
+
