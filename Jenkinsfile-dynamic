@@ -4,7 +4,7 @@ pipeline{
 
     stages{
         stage("Dynamic Parameter"){
-          step{
+          steps{
             script{
               
 properties([parameters([[$class: 'ChoiceParameter', choiceType: 'PT_SINGLE_SELECT', filterLength: 1, filterable: true, name: 'reponame', randomName: 'choice-parameter-19454829737064', script: [$class: 'GroovyScript', fallbackScript: [classpath: [], oldScript: '', sandbox: true, script: ''], script: [classpath: [], oldScript: '', sandbox: true, script: 'return[\' \', \'mep\', \'fins-datahub\']']]], [$class: 'CascadeChoiceParameter', choiceType: 'PT_SINGLE_SELECT', filterLength: 1, filterable: false, name: 'image', randomName: 'choice-parameter-19454832704262', referencedParameters: 'reponame', script: [$class: 'GroovyScript', fallbackScript: [classpath: [], oldScript: '', sandbox: false, script: ''], script: [classpath: [], oldScript: '', sandbox: true, script: '''if (\'reponame\' == \'mep\'){
